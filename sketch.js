@@ -4,8 +4,8 @@ var score = 0;
 var bg
 var bgmusic, enigmatic, creepy
 var p1, p2, p3, p4, p5, p6
-var gameState = 0;
 var play, play1;
+var playe, player
 
 function preload(){
    ghost = loadImage("yuh.png")
@@ -13,17 +13,17 @@ function preload(){
    logo = loadImage("LOGO.png")
    play = loadImage("play.png")
    warning = loadImage("warning.png")
-   //bgmusic = 
    soundFormats("mp3");
-   creepy = loadSound("creepy");
-   enigmatic = loadSound("enigmatic");
-   bgmusic = loadSound("bgmusic");
-   p1 = loadImage("1.jpg")
-   p2 = loadImage("2.jpg")
-   p3 = loadImage("3.jpg")
-   p4 = loadImage("4.jpg")
-   p5 = loadImage("5.jpg")
-   p6 = loadImage("6.jpg")
+   creepy = loadSound("sound/creepy");
+   enigmatic = loadSound("sound/enigmatic");
+   bgmusic = loadSound("sound/bgmusic");
+   p1 = loadImage("intros/1.jpg")
+   p2 = loadImage("intros/2.jpg")
+   p3 = loadImage("intros/3.jpg")
+   p4 = loadImage("intros/4.jpg")
+   p5 = loadImage("intros/5.jpg")
+   p6 = loadImage("intros/6.jpg")
+   playe = loadImage("player.png")
 }
 
 function setup(){
@@ -34,7 +34,7 @@ function setup(){
    ghost1.addImage(ghost)
    ghost1.scale = 0.16  
    //tint(255, 128)
-
+   
    //useb.scale = 1.2;
    
 
@@ -47,74 +47,100 @@ function setup(){
    //play1.scale = 0.16
 
 
-   warning1 = createSprite(120, 28, 10, 10);
+   /*warning1 = createSprite(120, 28, 10, 10);
    warning1.addImage(warning)
    warning1.scale = 0.48
+*/
+   
+   player = createSprite(450, 620)
+   player.addImage(playe)
+   player.scale = 0.32
 
-   /*p1s = createSprite(960, 468.5, 1920, 937);
-   p1s.addImage(warning)
-   p1s.visible = false
-
-   p2s = createSprite(960, 468.5, 1920, 937);
-   p2s.addImage(warning)
-   p2s.visible = false
-
-   p3s = createSprite(960, 468.5, 1920, 937);
-   p3s.addImage(warning)
-   p3s.visible = false
-
-   p4s = createSprite(960, 468.5, 1920, 937);
-   p4s.addImage(warning)
-   p4s.visible = false
-
-   p5s = createSprite(960, 468.5, 1920, 937);
-   p5s.addImage(warning)
-   p5s.visible = false
-
-   p6s = createSprite(960, 468.5, 1920, 937);
-   p6s.addImage(warning)
-   p6s.visible = false */
+   wall = createSprite(910, 937, 1820, 10)
+   wall.visible = false
 }
 function draw(){
    background(bg);
    drawSprites();
+   creepy.play();
+   
 
-   mousePressedOver(play1);{
-      //gameState = 1;
-      //console.log(gameState)
+   /*if (mousePressedOver(play1)){
+      setTimeout(background(0), 5000);
       background(p1)
       ghost1.visible = false;
       play1.visible = false;
-      setTimeout(showintro1, 5000);
-      setTimeout(showintro2, 5000);
-      setTimeout(showintro3, 5000);
-      setTimeout(showintro4, 5000);
-      setTimeout(showintro5, 5000);
-      setTimeout(showintro6, 15000);
+      logo1.visible = false;
+      //time1();
+      bgmusic.stop();
+      nothing();
+
+      //time2();
+
+      nothing();
+
+      //time3();
+
+      nothing();
+
+      //time4();
+
+      nothing();
+
+      //time5();
+
+      nothing();
+
+      //time6();*/
+
+      if (keyDown(RIGHT_ARROW)){
+         player.x += 32;
+      }
+   
+      if (keyDown(LEFT_ARROW)){
+         player.x -= 30;
+      }
+   
+      if (keyDown(DOWN_ARROW)){
+         player.y += 30;
+      }
+
+      if (keyDown(UP_ARROW)){
+         player.y -= 30;
+      }
+      
+      player.bounceOff(wall);
+      
    }
    
+   
+    
+
+   /*function time1(){
+      setTimeout(background(p1), 5000);
    }
 
-   function showintro1(){
-      p1s.visible = true
+   function time2(){
+      setTimeout(background(p2), 5000);
    }
 
-   function showintro2(){
-      p2s.visible = true
+   function time3(){
+      setTimeout(background(p3), 5000);
    }
 
-   function showintro3(){
-      p3s.visible = true
+   function time4(){
+      setTimeout(background(p4), 5000);
    }
 
-   function showintro4(){
-      p4s.visible = true
+   function time5(){
+      setTimeout(background(p5), 5000);
    }
 
-   function showintro5(){
-      p5s.visible = true
+   function time6(){
+      setTimeout(background(p6), 15000);
    }
 
-   function showintro6(){
-      p6s.visible = true
+   function nothing(){
+      setTimeout(null, 2000)
    }
+*/
