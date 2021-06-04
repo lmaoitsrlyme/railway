@@ -3,7 +3,7 @@ var gameState = 0, count = 0;
 var score = 0;
 var bg
 var bgmusic, enigmatic, creepy
-var p1, p2, p3, p4, p5, p6
+var p1, p2, p3, p4, p5_1, p6
 var play, play1;
 var playe, player
 
@@ -21,7 +21,7 @@ function preload(){
    p2 = loadImage("intros/2.jpg")
    p3 = loadImage("intros/3.jpg")
    p4 = loadImage("intros/4.jpg")
-   p5 = loadImage("intros/5.jpg")
+   p5_1 = loadImage("intros/5.jpg")
    p6 = loadImage("intros/6.jpg")
    playe = loadImage("player.png")
 }
@@ -62,61 +62,30 @@ function setup(){
 function draw(){
    background(bg);
    drawSprites();
-   creepy.play();
+   //creepy.play();
    
 
-   /*if (mousePressedOver(play1)){
-      setTimeout(background(0), 5000);
-      background(p1)
-      ghost1.visible = false;
-      play1.visible = false;
-      logo1.visible = false;
-      //time1();
-      bgmusic.stop();
-      nothing();
-
-      //time2();
-
-      nothing();
-
-      //time3();
-
-      nothing();
-
-      //time4();
-
-      nothing();
-
-      //time5();
-
-      nothing();
-
-      //time6();*/
-
-      if (keyDown(RIGHT_ARROW)){
-         player.x += 32;
-      }
-   
-      if (keyDown(LEFT_ARROW)){
-         player.x -= 30;
-      }
-   
-      if (keyDown(DOWN_ARROW)){
-         player.y += 30;
-      }
-
-      if (keyDown(UP_ARROW)){
-         player.y -= 30;
-      }
-      
-      player.bounceOff(wall);
-      
+   if (mousePressedOver(play1)){
+      gameState = 1;            
    }
    
    
-    
+   if (gameState === 1){
+      ghost1.visible = false;
+      play1.visible = false;
+      logo1.visible = false;
+      //creepy.stop();
+      player.visible = false;
 
-   /*function time1(){
+      setTimeout(() => time1, 1000)
+      setTimeout(() => time2, 1000)
+      setTimeout(() => time3, 1000)
+      setTimeout(() => time4, 1000)
+      setTimeout(() => time5, 1000)
+      setTimeout(() => time6, 1000)
+
+   }
+   function time1(){
       setTimeout(background(p1), 5000);
    }
 
@@ -133,7 +102,7 @@ function draw(){
    }
 
    function time5(){
-      setTimeout(background(p5), 5000);
+      setTimeout(background(p5_1), 5000);
    }
 
    function time6(){
@@ -143,4 +112,4 @@ function draw(){
    function nothing(){
       setTimeout(null, 2000)
    }
-*/
+}
